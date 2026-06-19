@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vierior.github.io/official-main-i-game-com-cn-2/sitemap.xml
