@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>九游体育 · 站点介绍与可信说明</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif; background-color: #f4f6fa; color: #1e293b; line-height: 1.6; }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0a1628 0%, #15223b 100%);
+            color: #e2e8f0;
+            padding: 70px 24px 56px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -60px; right: -40px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(99, 142, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 18px;
+            color: #ffffff;
+        }
+        .hero h1 span {
+            color: #7ba9ff;
+        }
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto 16px;
+            font-size: 1.1rem;
+            opacity: 0.92;
+        }
+        .hero .badge {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 8px 22px;
+            border: 1px solid rgba(123, 169, 255, 0.3);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #b3cdff;
+            background: rgba(255,255,255,0.03);
+            letter-spacing: 0.3px;
+        }
+
+        /* 通用容器 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 浅色正文区 – 优势 & 说明 */
+        .section-light {
+            background: #ffffff;
+            padding: 48px 0 40px;
+            border-bottom: 1px solid #e9edf2;
+        }
+        .section-light:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 28px;
+            color: #0b1d31;
+        }
+        .section-title small {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #5f6e85;
+            margin-left: 12px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        .card {
+            background: #f8fafc;
+            padding: 24px 20px;
+            border-radius: 18px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            transition: all 0.15s ease;
+        }
+        .card:hover {
+            background: #f1f5fe;
+            box-shadow: 0 8px 12px rgba(0, 20, 60, 0.06);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #0d2847;
+        }
+        .card p {
+            color: #2d3b4e;
+        }
+        .card .accent {
+            color: #1d5bbf;
+            font-weight: 500;
+        }
+
+        /* 说明区 – 段落自然承接 */
+        .explanatory-text {
+            font-size: 1.05rem;
+            max-width: 860px;
+            margin: 0 auto 18px;
+            color: #1e2f41;
+        }
+        .explanatory-text a {
+            color: #1c5bcb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(28, 91, 203, 0.25);
+        }
+        .explanatory-text a:hover {
+            border-bottom-color: #1c5bcb;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 24px 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px 28px;
+        }
+        .feature-list li {
+            position: relative;
+            padding-left: 24px;
+            font-size: 0.98rem;
+            color: #1f334b;
+        }
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+        /* FAQ 摘要 */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .faq-item {
+            background: #ffffff;
+            border-left: 4px solid #5282e0;
+            padding: 14px 18px;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .faq-item strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #0f2a47;
+            font-size: 1rem;
+        }
+        .faq-item p {
+            font-size: 0.94rem;
+            color: #33455c;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 10px 28px;
+            border: 1px solid #3063c0;
+            border-radius: 40px;
+            color: #1f4f9e;
+            background: transparent;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            background: #eef4ff;
+            border-color: #1f4f9e;
+        }
+
+        /* 底部 */
+        .footer {
+            background: #eef2f7;
+            padding: 32px 20px 28px;
+            text-align: center;
+            color: #2c405b;
+            font-size: 0.92rem;
+            border-top: 1px solid #dce2ea;
+        }
+        .footer a {
+            color: #1c5bcb;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+        .footer a:hover {
+            border-bottom-color: #1c5bcb;
+        }
+        .footer .sep {
+            margin: 0 12px;
+            color: #8894a5;
+        }
+
+        /* 响应式 */
+        @media (max-width: 780px) {
+            .hero h1 { font-size: 1.8rem; }
+            .grid-2 { grid-template-columns: 1fr; gap: 22px; }
+            .faq-grid { grid-template-columns: 1fr; }
+            .hero { padding: 50px 16px 44px; }
+        }
+        @media (max-width: 500px) {
+            .section-title { font-size: 1.35rem; }
+            .card { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO 区：深色头图，突出站点身份 -->
+<header class="hero">
+    <h1>关于 <span>九游体育</span></h1>
+    <p>一个提供体育资讯、赛事数据与内容聚合的线上平台。本站致力于为浏览者呈现清晰、可靠的信息入口，围绕运动领域搭建内容框架。</p>
+    <div class="badge">可信说明 · 站点介绍</div>
+</header>
+
+<!-- 优势区：浅色背景，卡片展示 -->
+<section class="section-light">
+    <div class="container">
+        <h2 class="section-title">平台特点 <small>内容与结构</small></h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>信息聚合</h3>
+                <p>汇集多项体育项目数据与资讯，通过分类索引帮助浏览者快速定位感兴趣的内容版块，减少信息过载。</p>
+            </div>
+            <div class="card">
+                <h3>持续更新</h3>
+                <p>后台保持内容迭代，覆盖赛事动态、规则解读、运动科普等，为日常浏览提供稳定的信息流。</p>
+            </div>
+            <div class="card">
+                <h3>简约界面</h3>
+                <p>页面强调浏览效率，减少冗余装饰，把注意力集中在有效信息本身，提升阅读体验。</p>
+            </div>
+            <div class="card">
+                <h3>开放访问</h3>
+                <p>无需注册即可浏览大部分内容，降低使用门槛，方便各类用户随时查阅体育相关材料。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 说明区：站点介绍与可信说明，自然嵌入链接 -->
+<section class="section-light">
+    <div class="container">
+        <h2 class="section-title">站点说明 <small>定位与背景</small></h2>
+        <div class="explanatory-text">
+            <p><strong>九游体育</strong> 作为一个体育内容型站点，其定位为信息参考与聚合入口，并非官方赛事组织或博彩平台。网站所收录的数据、文章、图表均来自公开或授权渠道，并在发布前进行基础校对，以降低事实偏差。</p>
+            <p>如果您对某一运动项目或赛事数据有深入了解的需求，可以持续关注 <a href="https://root-jiuyousports.com">九游体育</a> 的更新，以及平台内提供的相关专题说明。同时，本站鼓励浏览者交叉验证关键信息，尤其在涉及规则判罚、历史记录等专业内容时。</p>
+            <p>在内容信任方面，我们采取以下措施：标注转载来源（如有）、定期复核过时数据、接受用户反馈并修正误差。平台不存储个人敏感信息，也不主动推送未经核实的夸张标题。</p>
+        </div>
+
+        <!-- 简洁特色列表 -->
+        <ul class="feature-list">
+            <li>多项目分类：足球、篮球、网球、田径等</li>
+            <li>基础数据与赛季回顾</li>
+            <li>运动规则与术语简释</li>
+            <li>内容来源可溯</li>
+        </ul>
+        <a href="https://root-jiuyousports.com" class="btn-outline">九游体育</a>
+    </div>
+</section>
+
+<!-- FAQ 摘要：常见问题简明回答 -->
+<section class="section-light">
+    <div class="container">
+        <h2 class="section-title">常见疑问 <small>FAQ 摘要</small></h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <strong>九游体育是官方组织吗？</strong>
+                <p>不是。它是一个独立的体育内容聚合站点，不属于任何体育联合会或管理机构。</p>
+            </div>
+            <div class="faq-item">
+                <strong>信息更新频率如何？</strong>
+                <p>常规内容每周至少更新 1-2 次；重大赛事期间会适当增加资讯整理频率。</p>
+            </div>
+            <div class="faq-item">
+                <strong>是否包含投注或博彩内容？</strong>
+                <p>不含。网站聚焦于体育知识、数据与资讯，不涉及博彩引导或赔率推荐。</p>
+            </div>
+            <div class="faq-item">
+                <strong>如何联系网站维护者？</strong>
+                <p>通过页面底部提供的联系方式（邮件或社交媒体）可提交反馈，我们会在工作日内回复。</p>
+            </div>
+        </div>
+        <p style="margin-top: 28px; font-size: 0.95rem; color: #3d506a;">更多细节可直接访问 <a href="https://root-jiuyousports.com" style="color:#1c5bcb; text-decoration: underline;">九游体育</a> 各栏目查阅。</p>
+    </div>
+</section>
+
+<!-- 底部链接 -->
+<footer class="footer">
+    <div>
+        <span>数据参考 · 内容聚合</span>
+        <span class="sep">|</span>
+        <a href="https://root-jiuyousports.com">九游体育</a>
+        <span class="sep">|</span>
+        <span>介绍页 · 可信说明</span>
+    </div>
+    <div style="margin-top: 10px; font-size: 0.85rem; color: #5a6d84;">
+        © 2025 本页为独立介绍用途，内容仅供参考。
+    </div>
+</footer>
+
+</body>
+</html>
